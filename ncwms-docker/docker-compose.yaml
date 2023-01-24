@@ -1,0 +1,29 @@
+version: '3.3'
+services:    
+ ncWMS:
+    container_name: emodnetstack-ncwms
+    environment:
+      CATALINA_OPTS: -server -Djava.awt.headless=true -Xms768m -Xmx8G -XX:+UseConcMarkSweepGC
+        -XX:NewSize=48m -Dlog4j2.formatMsgNoLookups=true
+      JAVA_OPTS: -Dlog4j2.formatMsgNoLookups=true
+      TOMCAT_GROUP_ID: '2000'
+      TOMCAT_USER_ID: '2000'
+      UMASK: '0002'
+    image: guygriffiths/ncwms
+    ports:
+    - published: 12083
+      target: 8080
+    restart: unless-stopped
+    volumes:
+    - source: /opt/data00/extdata
+      target: /Data
+      type: bind
+    - source: C:\ETT\github\docker-ncwms-install\deployfiles\entrypoints\ncWMS_entrypoint.sh
+      target: /ncWMS/entrypoint.sh
+      type: bind
+    - source: C:\ETT\github\docker-ncwms-install\volumes\ncwmsData
+      target: /usr/local/tomcat/.ncWMS2
+      type: bind
+    - source: C:\ETT\github\docker-ncwms-install\deployfiles\configs\ncWMS.xml
+      target: /usr/local/tomcat/conf/Catalina/localhost/ncWMS.xml
+      type: bind    
