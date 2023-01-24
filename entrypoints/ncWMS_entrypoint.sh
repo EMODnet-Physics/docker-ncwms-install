@@ -37,6 +37,14 @@ if [ "$1" = 'start-tomcat.sh' ] || [ "$1" = 'catalina.sh' ]; then
     usermod -a -G usremodnetdata tomcat
     ###
 
+    cd /usr/local/tomcat/bin
+    pwd=$(digest.sh -a sha $ncwmspassword)    
+    pwd=$(echo "$pwd"|grep $ncwmspassword)
+    IFS=':'
+    read -ra ADDR <<<"$pwd"
+    pwd=${ADDR[1]}
+    sed -i "s/823f3f8e9a2727375993229e4a71593618441c07/$pwd/g" /usr/local/tomcat/conf/tomcat-users.xml
+
     exec gosu tomcat "$@"
 fi
 
