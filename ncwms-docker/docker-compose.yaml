@@ -9,7 +9,7 @@ services:
       TOMCAT_GROUP_ID: '2000'
       TOMCAT_USER_ID: '2000'
       UMASK: '0002'
-      ncwmspassword: ncwmspassword
+      ncwmspassword: customncwmspassword
     image: guygriffiths/ncwms
     ports:
     - published: 12083
