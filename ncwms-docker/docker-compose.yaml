@@ -9,15 +9,13 @@ services:
       TOMCAT_GROUP_ID: '2000'
       TOMCAT_USER_ID: '2000'
       UMASK: '0002'
+      ncwmspassword: ncwmspassword
     image: guygriffiths/ncwms
     ports:
     - published: 12083
       target: 8080
-    restart: unless-stopped
+    restart: unless-stopped     
     volumes:
-    - source: /opt/data00/extdata
-      target: /Data
-      type: bind
     - source: C:\ETT\github\docker-ncwms-install\deployfiles\entrypoints\ncWMS_entrypoint.sh
       target: /ncWMS/entrypoint.sh
       type: bind
@@ -26,4 +24,4 @@ services:
       type: bind
     - source: C:\ETT\github\docker-ncwms-install\deployfiles\configs\ncWMS.xml
       target: /usr/local/tomcat/conf/Catalina/localhost/ncWMS.xml
-      type: bind    
+      type: bind        
