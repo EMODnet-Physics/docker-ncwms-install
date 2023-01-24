@@ -31,6 +31,14 @@ change the path on the line:
 to a folder where you want to store ncWMS configuration files
 
 
+---
+
+change the port on the line:
+
+\- published: 12083
+
+to the port you want to use for the ncWMS service
+
 
  
 
