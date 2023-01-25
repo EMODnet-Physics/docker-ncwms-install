@@ -46,6 +46,18 @@ execute the command
 <code>docker-compose up -d </code>
 
 on the folder where you have deployed the docker-compose.yaml file
- 
+
+# HOW TO CONFIGURE ncWMS FOR ERDDAP DATASETS
+
+1. open a browser and go to the URL: http://server-address/ncWMS2/admin
+2. login with the username: ncwms and the password you have set in the docker-compose.yaml file
+3. to configure a ERDDAP datset put the url of a gridded datasets in the feld "Location", add a ID (we suggest to use the dataset ID), the Title and fill all other fileds if needed
+
+    For example if you want to setup ncWMS for the dataset:<br>https://erddap.emodnet-physics.eu/erddap/griddap/ERD_EP_CURR_DNS.html 
+     
+     you should put in the Location field: <br>https://erddap.emodnet-physics.eu/erddap/griddap/ERD_EP_CURR_DNS
+1. Push "Save configuration" button
+
+# TROUBLESHOOTING
 
 
